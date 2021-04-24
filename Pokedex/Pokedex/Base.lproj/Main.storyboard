@@ -18,22 +18,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uCt-vf-oi8">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="4" y="92" width="406" height="770"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zu8-v2-wz5">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zu8-v2-wz5">
+                                    <size key="itemSize" width="136" height="231"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pokedexCell" id="j7b-Gm-jxv" customClass="PokedexCollectionViewCell" customModule="Pokedex" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="136" height="231"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2ec-Vw-3wU">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="136" height="231"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="gUC-wt-UNS">
+                                                    <rect key="frame" x="0.0" y="0.0" width="136" height="136"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="136" id="Brh-Gj-A07"/>
+                                                        <constraint firstAttribute="height" constant="136" id="dbZ-4q-99H"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N 001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inm-Y9-er0">
+                                                    <rect key="frame" x="4" y="152" width="130" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                                    <color key="textColor" red="0.56862745098039214" green="0.56862745098039214" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bulbasaur" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8X-Rc-xvh">
+                                                    <rect key="frame" x="4" y="172" width="132" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="o8X-Rc-xvh" firstAttribute="leading" secondItem="2ec-Vw-3wU" secondAttribute="leading" constant="4" id="73L-fB-tw5"/>
+                                                <constraint firstItem="o8X-Rc-xvh" firstAttribute="top" secondItem="inm-Y9-er0" secondAttribute="bottom" constant="4" id="QWL-QN-dk4"/>
+                                                <constraint firstItem="inm-Y9-er0" firstAttribute="top" secondItem="gUC-wt-UNS" secondAttribute="bottom" constant="16" id="U7L-VG-74h"/>
+                                                <constraint firstAttribute="trailing" secondItem="o8X-Rc-xvh" secondAttribute="trailing" id="ZfZ-7T-0ml"/>
+                                                <constraint firstItem="gUC-wt-UNS" firstAttribute="top" secondItem="2ec-Vw-3wU" secondAttribute="top" id="cv5-nd-3Vb"/>
+                                                <constraint firstAttribute="trailing" secondItem="inm-Y9-er0" secondAttribute="trailing" constant="2" id="ghn-B5-GHk"/>
+                                                <constraint firstItem="gUC-wt-UNS" firstAttribute="centerX" secondItem="2ec-Vw-3wU" secondAttribute="centerX" id="jlI-c5-usQ"/>
+                                                <constraint firstItem="inm-Y9-er0" firstAttribute="leading" secondItem="2ec-Vw-3wU" secondAttribute="leading" constant="4" id="npJ-mB-1Zg"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="136" height="231"/>
+                                        <connections>
+                                            <outlet property="idLbl" destination="inm-Y9-er0" id="ibN-Q1-DZg"/>
+                                            <outlet property="namelbl" destination="o8X-Rc-xvh" id="zdO-2f-HoV"/>
+                                            <outlet property="pokemonImage" destination="gUC-wt-UNS" id="NTH-YK-Wfg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -42,9 +79,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uCt-vf-oi8" secondAttribute="bottom" id="897-Rr-1AZ"/>
-                            <constraint firstItem="uCt-vf-oi8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="J3R-5p-e34"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uCt-vf-oi8" secondAttribute="trailing" id="cJE-VW-YEy"/>
-                            <constraint firstItem="uCt-vf-oi8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hAp-Wk-37F"/>
+                            <constraint firstItem="uCt-vf-oi8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="J3R-5p-e34"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uCt-vf-oi8" secondAttribute="trailing" constant="4" id="cJE-VW-YEy"/>
+                            <constraint firstItem="uCt-vf-oi8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="hAp-Wk-37F"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bhJ-ja-SHI"/>
@@ -56,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="886.95652173913049" y="76.339285714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="W90-cK-mIP">
             <objects>
-                <viewController id="mnQ-Z2-VSF" sceneMemberID="viewController">
+                <viewController id="mnQ-Z2-VSF" customClass="DetailViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qn6-Of-FDw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,6 +133,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1" width="475" height="475"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -8,8 +8,17 @@
 import UIKit
 
 class PokedexCollectionViewCell: UICollectionViewCell {
+
+    @IBOutlet weak var pokemonImage: UIImageView!
+    @IBOutlet weak var idLbl: UILabel!
+    @IBOutlet weak var namelbl: UILabel!
     
     func setup() {
-        self.backgroundColor = UIColor.red
+        pokemonImage.backgroundColor = UIColor.systemGray5
+        pokemonImage.layer.cornerRadius = 5
+//        self.backgroundColor = UIColor.systemGray5
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 5
+        self.layer.borderColor = UIColor.systemGray5.cgColor
     }
 }

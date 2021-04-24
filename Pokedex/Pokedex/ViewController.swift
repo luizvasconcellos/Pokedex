@@ -23,10 +23,36 @@ class ViewController: UIViewController {
         pokedexCollectionView.dataSource = self
         pokedexCollectionView.delegate = self
     }
+    
+    override func viewWillLayoutSubviews() {
+        super .viewWillLayoutSubviews()
+        pokedexCollectionView.collectionViewLayout.invalidateLayout()
+    }
 
 }
 
-extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate {
+extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+    
+    //MARK: Collection View Layout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let columns: CGFloat = 3
+        let spacing:CGFloat = 5
+        let totalHorizontalSpacing = (columns - 1) * spacing
+        
+        let itemWidth = (collectionView.bounds.width - totalHorizontalSpacing) / columns
+        let itemSize = CGSize(width: itemWidth, height: itemWidth * 1.8)
+        
+        return itemSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
     
     //MARK: Collection View
     
@@ -43,4 +69,5 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate {
         return pokedexCell
     }
 }
+
 
