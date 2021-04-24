@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		072E3504EDBDE36780D07C27 /* Pods_PokedexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F688C3DCFECAC302107AC1BB /* Pods_PokedexTests.framework */; };
 		65F6C9975E93F60A5D2F1BD9 /* Pods_Pokedex_PokedexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAF8B84BB6AEEE1533DA54E /* Pods_Pokedex_PokedexUITests.framework */; };
 		C72926C852CC4A39102FC267 /* Pods_Pokedex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F785C10A5435CF587B325279 /* Pods_Pokedex.framework */; };
+		F0A67E732633CD9B001B5A59 /* PokedexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A67E722633CD9B001B5A59 /* PokedexCollectionViewCell.swift */; };
 		F0BB5DB92633C62F00D5E06B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BB5DB82633C62F00D5E06B /* AppDelegate.swift */; };
 		F0BB5DBB2633C62F00D5E06B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BB5DBA2633C62F00D5E06B /* SceneDelegate.swift */; };
 		F0BB5DBD2633C62F00D5E06B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BB5DBC2633C62F00D5E06B /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		6A4A3CFC67488C21366B4984 /* Pods-PokedexTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexTests.debug.xcconfig"; path = "Target Support Files/Pods-PokedexTests/Pods-PokedexTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7D5BE31F4908CCB7717B5AE6 /* Pods-Pokedex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex/Pods-Pokedex.debug.xcconfig"; sourceTree = "<group>"; };
 		DAAF8B84BB6AEEE1533DA54E /* Pods_Pokedex_PokedexUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex_PokedexUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A67E722633CD9B001B5A59 /* PokedexCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0BB5DB52633C62F00D5E06B /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0BB5DB82633C62F00D5E06B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0BB5DBA2633C62F00D5E06B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +103,6 @@
 				6A4A3CFC67488C21366B4984 /* Pods-PokedexTests.debug.xcconfig */,
 				FAD750950D8EA87616D02911 /* Pods-PokedexTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -113,6 +114,13 @@
 				F688C3DCFECAC302107AC1BB /* Pods_PokedexTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0A67E662633C7A1001B5A59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F0BB5DAC2633C62F00D5E06B = {
@@ -140,7 +148,9 @@
 		F0BB5DB72633C62F00D5E06B /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				F0A67E662633C7A1001B5A59 /* Model */,
 				F0BB5DB82633C62F00D5E06B /* AppDelegate.swift */,
+				F0A67E722633CD9B001B5A59 /* PokedexCollectionViewCell.swift */,
 				F0BB5DBA2633C62F00D5E06B /* SceneDelegate.swift */,
 				F0BB5DBC2633C62F00D5E06B /* ViewController.swift */,
 				F0BB5DBE2633C62F00D5E06B /* Main.storyboard */,
@@ -408,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0BB5DBD2633C62F00D5E06B /* ViewController.swift in Sources */,
+				F0A67E732633CD9B001B5A59 /* PokedexCollectionViewCell.swift in Sources */,
 				F0BB5DB92633C62F00D5E06B /* AppDelegate.swift in Sources */,
 				F0BB5DBB2633C62F00D5E06B /* SceneDelegate.swift in Sources */,
 			);
