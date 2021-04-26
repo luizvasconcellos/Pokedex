@@ -9,11 +9,13 @@ import Foundation
 
 struct Pokedex: Decodable {
     var count: Int
+    var all:[Poke]
     var nextPageUrl: String
     var previousPageUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case count
+        case all = "results"
         case nextPageUrl = "next"
         case previousPageUrl = "previous"
     }

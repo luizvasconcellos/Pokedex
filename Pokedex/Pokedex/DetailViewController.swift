@@ -9,10 +9,12 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+//    var pokemon:Pokemon
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        self.navigationItem.title = pokemon.name!
     }
     
 
