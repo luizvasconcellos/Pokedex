@@ -192,6 +192,11 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
         return pokedexCell
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("carregar mais itens")
+        getPokedexList()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if pokemonList.count > 0 {
