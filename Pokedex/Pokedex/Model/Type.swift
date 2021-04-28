@@ -7,22 +7,7 @@
 
 import Foundation
 
-struct Type: Decodable {
-    var name: String
-    var url: String
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case url
-    }
-}
-
-struct Types: Decodable {
-    var slot: Int
-    var type: Type
-    
-    enum CodingKeys: String, CodingKey {
-        case slot
-        case type
-    }
+struct TypeElement: Codable {
+    let slot: Int
+    let type: Basic
 }

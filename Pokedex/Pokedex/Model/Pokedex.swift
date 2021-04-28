@@ -9,7 +9,7 @@ import Foundation
 
 struct Pokedex: Decodable {
     var count: Int
-    var all:[Poke]
+    var all:[Basic]
     var nextPageUrl: String
     var previousPageUrl: String?
     

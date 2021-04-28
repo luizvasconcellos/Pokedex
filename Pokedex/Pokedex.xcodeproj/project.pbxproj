@@ -25,6 +25,7 @@
 		F0BB5DC52633C63300D5E06B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BB5DC32633C63300D5E06B /* LaunchScreen.storyboard */; };
 		F0BB5DD02633C63300D5E06B /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BB5DCF2633C63300D5E06B /* PokedexTests.swift */; };
 		F0BB5DDB2633C63300D5E06B /* PokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BB5DDA2633C63300D5E06B /* PokedexUITests.swift */; };
+		F0BC88192638BE0700772999 /* HorizontalProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC88182638BE0700772999 /* HorizontalProgressBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		F0BB5DD62633C63300D5E06B /* PokedexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0BB5DDA2633C63300D5E06B /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
 		F0BB5DDC2633C63300D5E06B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0BC88182638BE0700772999 /* HorizontalProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalProgressBarView.swift; sourceTree = "<group>"; };
 		F688C3DCFECAC302107AC1BB /* Pods_PokedexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokedexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F785C10A5435CF587B325279 /* Pods_Pokedex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD750950D8EA87616D02911 /* Pods-PokedexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexTests.release.xcconfig"; path = "Target Support Files/Pods-PokedexTests/Pods-PokedexTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				F0A67E722633CD9B001B5A59 /* PokedexCollectionViewCell.swift */,
 				F07639F62634546D002D3CC8 /* DetailViewController.swift */,
 				F0BB5DBC2633C62F00D5E06B /* ViewController.swift */,
+				F0BC88182638BE0700772999 /* HorizontalProgressBarView.swift */,
 				F0BB5DC12633C63300D5E06B /* Assets.xcassets */,
 				F0BB5DBE2633C62F00D5E06B /* Main.storyboard */,
 				F0BB5DC32633C63300D5E06B /* LaunchScreen.storyboard */,
@@ -443,6 +446,7 @@
 				F0763A1526361E4A002D3CC8 /* Type.swift in Sources */,
 				F07639FF26348DC5002D3CC8 /* Ability.swift in Sources */,
 				F07639F72634546D002D3CC8 /* DetailViewController.swift in Sources */,
+				F0BC88192638BE0700772999 /* HorizontalProgressBarView.swift in Sources */,
 				F0BB5DB92633C62F00D5E06B /* AppDelegate.swift in Sources */,
 				F0BB5DBB2633C62F00D5E06B /* SceneDelegate.swift in Sources */,
 			);

@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var pokedexCollectionView: UICollectionView!
     
-    
     let pokedexRedColor = UIColor(red: 227/255.0, green: 53/255.0, blue: 13/255.0, alpha: 1.0)
     private let itemsPerRow: CGFloat = 2
     let searchController = UISearchController(searchResultsController: nil)
@@ -35,13 +34,9 @@ class ViewController: UIViewController {
         pokedexCollectionView.dataSource = self
         pokedexCollectionView.delegate = self
         
-        // 1
         searchController.searchResultsUpdater = self
-        // 2
         searchController.obscuresBackgroundDuringPresentation = true
-        // 4
         navigationItem.searchController = searchController
-        // 5
         definesPresentationContext = true
         
         getPokedexList()
@@ -127,10 +122,7 @@ extension ViewController {
                             guard let pokemonResponse = response.value else { return }
                             let pokemonObj = pokemonResponse
                             self.pokemonList.append(pokemonObj)
-                            //                                if let id = pokemonObj.id {
-                            //                                    print("ID :: " + String(id) + " NOME:: " + pokemonObj.name + " TOTAL :: " + String(self.pokemonList.count))
-                            //
-                            //                                }
+                            self.pokemonList.sort { $0.id < $1.id }
                             //TODO:: Ver um melhor lugar para colocar o reload
                             self.pokedexCollectionView.reloadData()
                         }
@@ -193,8 +185,11 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("carregar mais itens")
-        getPokedexList()
+
+        //TODO::  coloca a request no final da página.
+
+            print("carregar mais itens")
+            getPokedexList()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -207,9 +202,9 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == detailSegueIdentifier {
-//            if let detailVC = segue.destination as? DetailViewController {
-//                detailVC.pokemon = sender as! Pokemon
-//            }
+            if let detailVC = segue.destination as? DetailViewController {
+                detailVC.pokemonObj = sender as! Pokemon
+            }
         }
     }
 }
@@ -221,12 +216,11 @@ extension ViewController: UISearchResultsUpdating {
         filterContentForSearchText(searchBar.text!)
     }
     
-    func filterContentForSearchText(_ searchText: String) {//, category: Candy.Category? = nil) {
+    func filterContentForSearchText(_ searchText: String) {
         filteredPokemons = pokemonList.filter { (pokemon: Pokemon) -> Bool in
-            let filterResult = pokemon.name!.lowercased().contains(searchText.lowercased())
+            let filterResult = pokemon.name.lowercased().contains(searchText.lowercased())
             return filterResult
         }
-        
         pokedexCollectionView.reloadData()
     }
     

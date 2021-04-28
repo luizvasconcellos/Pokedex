@@ -7,26 +7,43 @@
 
 import Foundation
 
-struct Ability : Decodable {
-    var name: String
-    var url: String
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case url
-    }
-}
+struct Ability: Codable {
+    let ability: Basic
+    let isHidden: Bool
+    let slot: Int
 
-struct Abilities: Decodable {
-    var all: [Ability]
-    var isHidden: Bool
-    var slot: Int
-    
     enum CodingKeys: String, CodingKey {
-        case all = "ability"
+        case ability
         case isHidden = "is_hidden"
         case slot
     }
 }
 
+struct Basic: Codable {
+    let name: String
+    let url: String
+}
 
+struct AbilityDetail: Codable {
+    let effectEntries: [EffectEntry]
+    let id: Int
+    let name: String
+
+    enum CodingKeys: String, CodingKey {
+        case effectEntries = "effect_entries"
+        case id
+        case name
+    }
+}
+
+struct EffectEntry: Codable {
+    let effect: String
+    let language: Basic
+    let shortEffect: String
+
+    enum CodingKeys: String, CodingKey {
+        case effect
+        case language
+        case shortEffect = "short_effect"
+    }
+}

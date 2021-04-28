@@ -7,50 +7,84 @@
 
 import Foundation
 
-struct Pokemon: Decodable {
-    var id: Int?
-    var name: String?
-//    var url: String
-    var order: Int?
-    var height: Int?
-    var weight: Int?
-    var baseExperience: Int?
-    var abilities: Abilities?
-    var isDefault: Bool?
-//    var stats: [Stats]
-//    var types: [Types]
-//    var imageURL: ArtworkImage
-    
+struct Pokemon: Codable {
+    let abilities: [Ability]
+    let id: Int
+    let moves: [Move]
+    let name: String
+    let sprites: Sprites
+    let stats: [Stat]
+    let types: [TypeElement]
+
     enum CodingKeys: String, CodingKey {
+        case abilities
         case id
+        case moves
         case name
-//        case url
-        case order
-        case height
-        case weight
-        case abilities = "ability"
-        case baseExperience = "base_experience"
-        case isDefault = "is_default"
-//        case stats
-//        case types
-//        case imageURL = "official-artwork"
+        case sprites
+        case stats
+        case types
     }
 }
 
-struct Poke: Decodable {
-    var name: String
-    var url: String
-    
+struct Move: Codable {
+    let move: Basic
+    let versionGroupDetails: [VersionGroupDetail]
+
     enum CodingKeys: String, CodingKey {
-        case name
-        case url
+        case move
+        case versionGroupDetails = "version_group_details"
     }
 }
 
-//struct ArtworkImage: Decodable {
-//    var imageURL: String
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case imageURL = "front_default"
-//    }
-//}
+struct VersionGroupDetail: Codable {
+    let levelLearnedAt: Int
+    let moveLearnMethod: Basic
+    let versionGroup: Basic
+
+    enum CodingKeys: String, CodingKey {
+        case levelLearnedAt = "level_learned_at"
+        case moveLearnMethod = "move_learn_method"
+        case versionGroup = "version_group"
+    }
+}
+
+class Sprites: Codable {
+    let other: Other?
+
+    enum CodingKeys: String, CodingKey {
+        case other
+    }
+
+    init(other: Other?) {
+        self.other = other
+    }
+}
+
+struct DreamWorld: Codable {
+    let frontDefault: String
+    let frontFemale: String?
+
+    enum CodingKeys: String, CodingKey {
+        case frontDefault = "front_default"
+        case frontFemale = "front_female"
+    }
+}
+
+struct Other: Codable {
+    let dreamWorld: DreamWorld
+    let officialArtwork: OfficialArtwork
+
+    enum CodingKeys: String, CodingKey {
+        case dreamWorld = "dream_world"
+        case officialArtwork = "official-artwork"
+    }
+}
+
+struct OfficialArtwork: Codable {
+    let frontDefault: String
+
+    enum CodingKeys: String, CodingKey {
+        case frontDefault = "front_default"
+    }
+}

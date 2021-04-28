@@ -7,24 +7,13 @@
 
 import Foundation
 
-struct Stat : Decodable{
-    var name: String
-    var url: String
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case url
-    }
-}
+struct Stat: Codable {
+    let baseStat: Int
+    let effort: Int
+    let stat: Basic
 
-struct Stats : Decodable{
-    var base: String
-    var effort: String
-    var stat: Stat
-    
-    
     enum CodingKeys: String, CodingKey {
-        case base = "base_stat"
+        case baseStat = "base_stat"
         case effort
         case stat
     }
