@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import Alamofire
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var pokedexCollectionView: UICollectionView!
     
+    let networking = Networking()
     let pokedexRedColor = UIColor(red: 227/255.0, green: 53/255.0, blue: 13/255.0, alpha: 1.0)
-    private let itemsPerRow: CGFloat = 2
+    let itemsPerRow: CGFloat = 2
     let searchController = UISearchController(searchResultsController: nil)
     let detailSegueIdentifier = "DetailSegue"
     
@@ -76,10 +76,6 @@ class ViewController: UIViewController {
         let imageView = UIImageView(image:logoImage)
         self.navigationItem.titleView = imageView
         
-//        let buttonAppearance = UIBarButtonItemAppearance()
-//        buttonAppearance.configureWithDefault(for: .plain)
-//        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = pokedexRedColor
@@ -92,10 +88,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController {
-    //MARK: API Call
+    //MARK: Get data
     func getPokedexList() {
         
-        var getUrl = "https://pokeapi.co/api/v2/pokemon/"
+        var getUrl = ""
         
         if let nextUrl = pokedexObj?.nextPageUrl {
             if nextUrl != "" {
@@ -109,27 +105,26 @@ extension ViewController {
             }
         }
         
-        AF.request(getUrl).validate().responseDecodable(of: Pokedex.self) { (response) in
-            guard let pokedex = response.value else { return }
-            self.pokedexObj = pokedex
-            if let items = self.pokedexObj?.all{
+        var pokedexList:[Basic] = []
+        networking.getPokedex(for: getUrl) { (pokedex) in
+            if pokedex.all.count > 0 {
+                pokedexList = pokedex.all
+                self.getPokemon(for: pokedexList)
+            }
+        }
+        
+    }
+    
+    func getPokemon(for pokedexList:[Basic]) {
+        
+        for item in pokedexList {
+            if !item.url.isEmpty {
                 
-                for item in items {
-                    if !item.url.isEmpty {
-                        
-                        AF.request(item.url).validate().responseDecodable(of: Pokemon.self) { (response) in
-                            
-                            guard let pokemonResponse = response.value else { return }
-                            let pokemonObj = pokemonResponse
-                            self.pokemonList.append(pokemonObj)
-                            self.pokemonList.sort { $0.id < $1.id }
-                            //TODO:: Ver um melhor lugar para colocar o reload
-                            self.pokedexCollectionView.reloadData()
-                        }
-                    }
+                networking.getPokemon(for: item.url) { (pokemon) in
+                    self.pokemonList.append(pokemon)
+                    self.pokemonList.sort { $0.id < $1.id }
+                    self.pokedexCollectionView.reloadData()
                 }
-            }else {
-                print("deu erro para pegar os pokemons")
             }
         }
     }

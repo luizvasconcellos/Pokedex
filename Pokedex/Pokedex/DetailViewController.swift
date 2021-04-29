@@ -23,10 +23,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var specialDefenseBarView: HorizontalProgressBarView!
     @IBOutlet weak var speedBarView: HorizontalProgressBarView!
     
-    let evolutionBaseUrl = "https://pokeapi.co/api/v2/evolution-chain/"
+    let networking = Networking()
     let navigationBarTitle = "Detalhes"
     let tableViewCellIdentifier = "detailCell"
+    let maxStat: Double = 250.0
     var pokemonObj: Pokemon? = nil
+    var evolutionPokemonList: [Pokemon] = []
+    var typePokemonList: [Pokemon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,7 @@ class DetailViewController: UIViewController {
                 self.nameLbl.text = pokemon.name
             }
             setupStats(for: pokemon)
+            setupEvolution()
         }
     }
     
@@ -55,21 +59,25 @@ class DetailViewController: UIViewController {
         for stat in pokemon.stats {
             switch stat.stat.name.lowercased() {
             case "hp":
-                hpBarView.progress = CGFloat(Double(stat.baseStat) / 250.0)
+                hpBarView.progress = CGFloat(Double(stat.baseStat) / maxStat)
             case "attack":
-                attackBarView.progress = CGFloat(Double(stat.baseStat) / 250.0)
+                attackBarView.progress = CGFloat(Double(stat.baseStat) / maxStat)
             case "defense":
-                defenseBarView.progress = CGFloat(Double(stat.baseStat) / 250.0)
+                defenseBarView.progress = CGFloat(Double(stat.baseStat) / maxStat)
             case "special-attack":
-                specialAttackBarView.progress = CGFloat(Double(stat.baseStat) / 250.0)
+                specialAttackBarView.progress = CGFloat(Double(stat.baseStat) / maxStat)
             case "special-defense":
-                specialDefenseBarView.progress = CGFloat(Double(stat.baseStat) / 250.0)
+                specialDefenseBarView.progress = CGFloat(Double(stat.baseStat) / maxStat)
             case "speed":
-                speedBarView.progress = CGFloat(Double(stat.baseStat) / 250.0)
+                speedBarView.progress = CGFloat(Double(stat.baseStat) / maxStat)
             default:
                 print("")
             }
         }
+    }
+    
+    func setupEvolution() {
+        getSpecies()
     }
 }
 
@@ -129,24 +137,52 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension DetailViewController {
-    //MARK: API Call
-    func getEvolutionChain(for id:Int) {
-        
-//        let evolutionUrl = evolutionBaseUrl + String(id)
-//        AF.request(evolutionUrl).validate().responseDecodable(of: Pokedex.self) { (response) in
-//            guard let pokedex = response.value else { return }
-//        }
+    
+    func getSpecies() {
+        if let url = pokemonObj?.species.url {
+            networking.getSpecies(for: url) { (species) in
+                if let evChainUrl = species.evolutionChainUrl?.url {
+                    self.getEvolution(url: evChainUrl)
+                }
+            }
+        }
     }
     
+    func getEvolution(url: String) {
+        networking.getEvolutionChain(for: url) { (evolution) in
+            if evolution.chain.evolvesTo.count > 0 {
+                for item in evolution.chain.evolvesTo {
+                    //get pokemon
+                    if !item.species.name.isEmpty {
+                        self.networking.getPokemon(ByName: item.species.name) { (pokemon) in
+                            self.evolutionPokemonList.append(pokemon)
+//                            self.pokemonList.sort { $0.id < $1.id }
+//                            self.pokedexCollectionView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //MARK: API Call
     func getAbilityDetail(for url:String) {
         
         AF.request(url).validate().responseDecodable(of: AbilityDetail.self) { (response) in
+            
+            switch response.result {
+            case .success:
+                print("Validation Successful")
+            case let .failure(error):
+                print(error)
+                return
+            }
+            
             guard let abilityDetail = response.value else { return }
             
             var desc = ""
             for description in abilityDetail.effectEntries {
                 if description.language.name.uppercased() == "EN" {
-                    desc = description.effect
+                    desc = description.effect.description
                 }
             }
             

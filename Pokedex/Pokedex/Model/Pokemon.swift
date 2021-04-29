@@ -12,6 +12,7 @@ struct Pokemon: Codable {
     let id: Int
     let moves: [Move]
     let name: String
+    let species: Basic
     let sprites: Sprites
     let stats: [Stat]
     let types: [TypeElement]
@@ -21,6 +22,7 @@ struct Pokemon: Codable {
         case id
         case moves
         case name
+        case species
         case sprites
         case stats
         case types
