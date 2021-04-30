@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 import Kingfisher
 
 class DetailViewController: UIViewController {
@@ -15,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var idLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var detailTableView: UITableView!
+    @IBOutlet weak var evolutionCollectionView: UICollectionView!
     
     @IBOutlet weak var hpBarView: HorizontalProgressBarView!
     @IBOutlet weak var attackBarView: HorizontalProgressBarView!
@@ -26,6 +26,8 @@ class DetailViewController: UIViewController {
     let networking = Networking()
     let navigationBarTitle = "Detalhes"
     let tableViewCellIdentifier = "detailCell"
+    let evolutionCellidentifier = "evolutionPokemonCell"
+    let defaultLanguage = "EN"
     let maxStat: Double = 250.0
     var pokemonObj: Pokemon? = nil
     var evolutionPokemonList: [Pokemon] = []
@@ -36,6 +38,8 @@ class DetailViewController: UIViewController {
 
         detailTableView.dataSource = self
         detailTableView.delegate = self
+        evolutionCollectionView.dataSource = self
+        evolutionCollectionView.delegate = self
         
         self.navigationItem.title = navigationBarTitle
         pokemonImage.backgroundColor = UIColor.systemGray5
@@ -100,7 +104,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             if let url = pokemonObj?.abilities[indexPath.row].ability.url {
-                getAbilityDetail(for: url)
+                showAbilityDetail(for: url)
             }
         }
     }
@@ -142,13 +146,13 @@ extension DetailViewController {
         if let url = pokemonObj?.species.url {
             networking.getSpecies(for: url) { (species) in
                 if let evChainUrl = species.evolutionChainUrl?.url {
-                    self.getEvolution(url: evChainUrl)
+                    self.showEvolution(url: evChainUrl)
                 }
             }
         }
     }
     
-    func getEvolution(url: String) {
+    func showEvolution(url: String) {
         networking.getEvolutionChain(for: url) { (evolution) in
             if evolution.chain.evolvesTo.count > 0 {
                 for item in evolution.chain.evolvesTo {
@@ -158,30 +162,20 @@ extension DetailViewController {
                             self.evolutionPokemonList.append(pokemon)
 //                            self.pokemonList.sort { $0.id < $1.id }
 //                            self.pokedexCollectionView.reloadData()
+                            self.evolutionCollectionView.reloadData()
                         }
                     }
                 }
             }
         }
     }
-    //MARK: API Call
-    func getAbilityDetail(for url:String) {
-        
-        AF.request(url).validate().responseDecodable(of: AbilityDetail.self) { (response) in
+    
+    func showAbilityDetail(for url:String) {
             
-            switch response.result {
-            case .success:
-                print("Validation Successful")
-            case let .failure(error):
-                print(error)
-                return
-            }
-            
-            guard let abilityDetail = response.value else { return }
-            
+        networking.getAbilityDetail(for: url) { (abilityDetail) in
             var desc = ""
             for description in abilityDetail.effectEntries {
-                if description.language.name.uppercased() == "EN" {
+                if description.language.name.uppercased() == self.defaultLanguage {
                     desc = description.effect.description
                 }
             }
@@ -195,4 +189,22 @@ extension DetailViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+}
+
+extension DetailViewController:UICollectionViewDataSource,UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let evolutionCell = evolutionCollectionView.dequeueReusableCell(withReuseIdentifier: evolutionCellidentifier, for: indexPath) as! EvolutionCollectionViewCell
+        
+        evolutionCell.setup(with: evolutionPokemonList[indexPath.row])
+        
+        return evolutionCell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        return evolutionPokemonList.count
+    }
+    
 }

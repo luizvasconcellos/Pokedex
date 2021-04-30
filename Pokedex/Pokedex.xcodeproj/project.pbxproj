@@ -30,6 +30,7 @@
 		F0BC88292639AAE400772999 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BB5DBC2633C62F00D5E06B /* ViewController.swift */; };
 		F0BC882E2639E29100772999 /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC882D2639E29000772999 /* Species.swift */; };
 		F0BC8833263A089700772999 /* EvolutionChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC8832263A089700772999 /* EvolutionChain.swift */; };
+		F0BC8839263AE9DD00772999 /* EvolutionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC8838263AE9DD00772999 /* EvolutionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		F0BC882426399B7600772999 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F0BC882D2639E29000772999 /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
 		F0BC8832263A089700772999 /* EvolutionChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionChain.swift; sourceTree = "<group>"; };
+		F0BC8838263AE9DD00772999 /* EvolutionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvolutionCollectionViewCell.swift; sourceTree = "<group>"; };
 		F688C3DCFECAC302107AC1BB /* Pods_PokedexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokedexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F785C10A5435CF587B325279 /* Pods_Pokedex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD750950D8EA87616D02911 /* Pods-PokedexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexTests.release.xcconfig"; path = "Target Support Files/Pods-PokedexTests/Pods-PokedexTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -176,11 +178,11 @@
 		F0BB5DB72633C62F00D5E06B /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				F0BC8837263AE98400772999 /* View */,
 				F0BC882326399B2400772999 /* Networking */,
 				F0A67E662633C7A1001B5A59 /* Model */,
 				F0BB5DB82633C62F00D5E06B /* AppDelegate.swift */,
 				F0BB5DBA2633C62F00D5E06B /* SceneDelegate.swift */,
-				F0A67E722633CD9B001B5A59 /* PokedexCollectionViewCell.swift */,
 				F07639F62634546D002D3CC8 /* DetailViewController.swift */,
 				F0BB5DBC2633C62F00D5E06B /* ViewController.swift */,
 				F0BC88182638BE0700772999 /* HorizontalProgressBarView.swift */,
@@ -216,6 +218,15 @@
 				F0BC882426399B7600772999 /* Networking.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		F0BC8837263AE98400772999 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F0A67E722633CD9B001B5A59 /* PokedexCollectionViewCell.swift */,
+				F0BC8838263AE9DD00772999 /* EvolutionCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,6 +472,7 @@
 				F0763A0426348DE4002D3CC8 /* Pokemon.swift in Sources */,
 				F0BC882526399B7600772999 /* Networking.swift in Sources */,
 				F0A67E732633CD9B001B5A59 /* PokedexCollectionViewCell.swift in Sources */,
+				F0BC8839263AE9DD00772999 /* EvolutionCollectionViewCell.swift in Sources */,
 				F07639F2263453DC002D3CC8 /* Pokedex.swift in Sources */,
 				F0BC882E2639E29100772999 /* Species.swift in Sources */,
 				F0763A1526361E4A002D3CC8 /* Type.swift in Sources */,
@@ -657,7 +669,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.luizvasconcellos.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -677,7 +689,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.luizvasconcellos.Pokedex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

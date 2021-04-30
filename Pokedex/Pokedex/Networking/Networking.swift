@@ -93,8 +93,21 @@ class Networking {
         }
     }
     
-    func getAbilityDetail()  {
-        //TODO:: Implementar esta função
+    func getAbilityDetail(for url:String, completion: @escaping (AbilityDetail) -> Void) {
+        
+        AF.request(url).validate().responseDecodable(of: AbilityDetail.self) { (response) in
+            
+            switch response.result {
+            case .success:
+                print("Validation Successful")
+            case let .failure(error):
+                print(error)
+                return
+            }
+            
+            guard let abilityDetail = response.value else { return }
+            completion(abilityDetail)
+        }
     }
 }
 

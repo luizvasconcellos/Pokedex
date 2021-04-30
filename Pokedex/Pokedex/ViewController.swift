@@ -107,6 +107,7 @@ extension ViewController {
         
         var pokedexList:[Basic] = []
         networking.getPokedex(for: getUrl) { (pokedex) in
+            self.pokedexObj = pokedex
             if pokedex.all.count > 0 {
                 pokedexList = pokedex.all
                 self.getPokemon(for: pokedexList)
