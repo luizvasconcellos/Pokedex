@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
     let tableViewCellIdentifier = "detailCell"
     let evolutionCellidentifier = "evolutionPokemonCell"
     let defaultLanguage = "EN"
+    let typePokemonsSegue = "typeSegue"
     let maxStat: Double = 250.0
     var pokemonObj: Pokemon? = nil
     var evolutionPokemonList: [Pokemon] = []
@@ -95,6 +96,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = pokemonObj?.abilities[indexPath.row].ability.name
         } else {
             cell.textLabel?.text = pokemonObj?.types[indexPath.row].type.name
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
         }
         
         return cell
@@ -106,6 +108,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             if let url = pokemonObj?.abilities[indexPath.row].ability.url {
                 showAbilityDetail(for: url)
             }
+        } else if indexPath.section == 1 {
+            let type = pokemonObj?.types[indexPath.row]
+            performSegue(withIdentifier: typePokemonsSegue, sender: type)
         }
     }
     
@@ -128,16 +133,21 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         print("passou no numberOfRowsInSection")
         switch section {
         case 0:
-            print("SECTION :: 0 ROWS:: \(pokemonObj?.abilities.count )")
             return pokemonObj?.abilities.count ?? 0
         case 1:
-            print("SECTION :: 1 ROWS:: \(pokemonObj?.types.count )")
             return pokemonObj?.types.count ?? 0
         default:
             return 0
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == typePokemonsSegue {
+            if let detailVC = segue.destination as? TypePokemonsViewController {
+                detailVC.pokemonType = sender as! TypeElement
+            }
+        }
+    }
 }
 
 extension DetailViewController {
@@ -153,6 +163,7 @@ extension DetailViewController {
     }
     
     func showEvolution(url: String) {
+        
         networking.getEvolutionChain(for: url) { (evolution) in
             if evolution.chain.evolvesTo.count > 0 {
                 for item in evolution.chain.evolvesTo {

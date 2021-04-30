@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     let networking = Networking()
     let pokedexRedColor = UIColor(red: 227/255.0, green: 53/255.0, blue: 13/255.0, alpha: 1.0)
-    let itemsPerRow: CGFloat = 2
+    let itemsPerRow: CGFloat = 3
     let searchController = UISearchController(searchResultsController: nil)
     let detailSegueIdentifier = "DetailSegue"
     
@@ -136,7 +136,7 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
     //MARK: Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let columns: CGFloat = 3
+        let columns: CGFloat = itemsPerRow
         let spacing:CGFloat = 5
         let totalHorizontalSpacing = (columns - 1) * spacing
         

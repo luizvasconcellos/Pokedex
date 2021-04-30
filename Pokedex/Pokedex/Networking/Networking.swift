@@ -52,7 +52,7 @@ class Networking {
             case .success:
                 print("Validation Successful")
             case let .failure(error):
-                print("getpokemon error: \(error)")
+                print("getPokemon error: \(error)")
                 return
             }
             
@@ -107,6 +107,23 @@ class Networking {
             
             guard let abilityDetail = response.value else { return }
             completion(abilityDetail)
+        }
+    }
+    
+    func getPokemons(forType typeUrl: String, completion: @escaping (Type) -> Void) {
+        
+        AF.request(typeUrl).validate().responseDecodable(of: Type.self) { (response) in
+            
+            switch response.result {
+            case .success:
+                print("Validation Successful")
+            case let .failure(error):
+                print(error)
+                return
+            }
+            
+            guard let type = response.value else { return }
+            completion(type)
         }
     }
 }
