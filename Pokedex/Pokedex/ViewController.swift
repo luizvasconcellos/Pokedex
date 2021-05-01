@@ -124,9 +124,11 @@ extension ViewController {
             if !item.url.isEmpty {
                 
                 networking.getPokemon(for: item.url) { (pokemon) in
-                    self.pokemonList.append(pokemon)
-                    self.pokemonList.sort { $0.id < $1.id }
-                    self.pokedexCollectionView.reloadData()
+                    if self.pokemonList.filter({($0.id == pokemon.id)}).count == 0 {
+                        self.pokemonList.append(pokemon)
+                        self.pokemonList.sort { $0.id < $1.id }
+                        self.pokedexCollectionView.reloadData()
+                    }
                 }
             }
         }
@@ -207,7 +209,7 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == detailSegueIdentifier {
             if let detailVC = segue.destination as? DetailViewController {
-                detailVC.pokemonObj = sender as! Pokemon
+                detailVC.pokemonObj = (sender as! Pokemon)
             }
         }
     }

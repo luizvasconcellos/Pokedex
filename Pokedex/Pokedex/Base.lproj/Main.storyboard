@@ -426,6 +426,7 @@
                         <outlet property="defenseBarView" destination="9ra-iG-4fo" id="mx1-T3-58n"/>
                         <outlet property="detailTableView" destination="m4j-lK-jQd" id="bHM-xx-Iql"/>
                         <outlet property="evolutionCollectionView" destination="Lm5-10-eo1" id="Bv7-Up-KKc"/>
+                        <outlet property="evolutionHeaderLbl" destination="c1S-zX-Iv6" id="8w6-gg-LB5"/>
                         <outlet property="hpBarView" destination="ZvE-o2-0pu" id="ZKv-WO-Sl4"/>
                         <outlet property="idLbl" destination="afM-r3-gd9" id="wxn-5C-9dV"/>
                         <outlet property="nameLbl" destination="h4O-R4-Uhr" id="QCM-4R-7OD"/>

@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var specialAttackBarView: HorizontalProgressBarView!
     @IBOutlet weak var specialDefenseBarView: HorizontalProgressBarView!
     @IBOutlet weak var speedBarView: HorizontalProgressBarView!
+    @IBOutlet weak var evolutionHeaderLbl: UILabel!
     
     let networking = Networking()
     let navigationBarTitle = "Detalhes"
@@ -29,6 +30,8 @@ class DetailViewController: UIViewController {
     let evolutionCellidentifier = "evolutionPokemonCell"
     let defaultLanguage = "EN"
     let typePokemonsSegue = "typeSegue"
+    let evHeaderText = "Evolução"
+    let evHeaderWhitOutEvolutionText = "Este pokemon não possui evolução"
     let maxStat: Double = 250.0
     var pokemonObj: Pokemon? = nil
     var evolutionPokemonList: [Pokemon] = []
@@ -96,14 +99,15 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = pokemonObj?.abilities[indexPath.row].ability.name
         } else {
             cell.textLabel?.text = pokemonObj?.types[indexPath.row].type.name
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
         }
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
     }
    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath , animated: false)
         if indexPath.section == 0 {
             if let url = pokemonObj?.abilities[indexPath.row].ability.url {
                 showAbilityDetail(for: url)
@@ -130,7 +134,6 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("passou no numberOfRowsInSection")
         switch section {
         case 0:
             return pokemonObj?.abilities.count ?? 0
@@ -165,19 +168,45 @@ extension DetailViewController {
     func showEvolution(url: String) {
         
         networking.getEvolutionChain(for: url) { (evolution) in
-            if evolution.chain.evolvesTo.count > 0 {
-                for item in evolution.chain.evolvesTo {
-                    //get pokemon
-                    if !item.species.name.isEmpty {
-                        self.networking.getPokemon(ByName: item.species.name) { (pokemon) in
-                            self.evolutionPokemonList.append(pokemon)
-//                            self.pokemonList.sort { $0.id < $1.id }
-//                            self.pokedexCollectionView.reloadData()
-                            self.evolutionCollectionView.reloadData()
-                        }
-                    }
-                }
+            
+            if !evolution.chain.species.name.isEmpty {
+                self.addPokemonToEvolutionList(for: evolution.chain.species.name)
             }
+            
+            if evolution.chain.evolvesTo.count > 0 {
+                self.evolutionHeaderLbl.text = self.evHeaderText
+                
+                for item in evolution.chain.evolvesTo {
+                    
+                    if !item.species.name.isEmpty {
+                        self.addPokemonToEvolutionList(for: item.species.name)
+                    }
+                    
+                    var ev:[Chain] = item.evolvesTo
+                    var count = 0
+                    repeat {
+                        if ev.count > 0 {
+                        if !ev[count].species.name.isEmpty {
+                            self.addPokemonToEvolutionList(for: ev[count].species.name)
+                        }
+                        ev = ev[count].evolvesTo
+                        count += 1
+                        }
+                    } while ev.count > 0
+                    
+                }
+            } else {
+                self.evolutionHeaderLbl.text = "\(self.evHeaderText) - \(self.evHeaderWhitOutEvolutionText)"
+            }
+        }
+    }
+    
+    func addPokemonToEvolutionList(for name:String) {
+        
+        self.networking.getPokemon(ByName: name) { (pokemon) in
+            self.evolutionPokemonList.append(pokemon)
+            self.evolutionPokemonList.sort { $0.id < $1.id }
+            self.evolutionCollectionView.reloadData()
         }
     }
     
@@ -203,6 +232,7 @@ extension DetailViewController {
 }
 
 extension DetailViewController:UICollectionViewDataSource,UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let evolutionCell = evolutionCollectionView.dequeueReusableCell(withReuseIdentifier: evolutionCellidentifier, for: indexPath) as! EvolutionCollectionViewCell
@@ -211,7 +241,6 @@ extension DetailViewController:UICollectionViewDataSource,UICollectionViewDelega
         
         return evolutionCell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 

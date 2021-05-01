@@ -25,14 +25,14 @@ class Networking {
             
             switch response.result {
             case .success:
-                print("Validation Successful")
+                guard let pokedex = response.value else { return }
+                completion(pokedex)
             case let .failure(error):
                 print("getPokedex error: \(error)")
                 return
             }
             
-            guard let pokedex = response.value else { return }
-            completion(pokedex)
+            
         }
     }
     
@@ -50,14 +50,14 @@ class Networking {
             
             switch response.result {
             case .success:
-                print("Validation Successful")
+                guard let pokemonResponse = response.value else { return }
+                completion(pokemonResponse)
             case let .failure(error):
                 print("getPokemon error: \(error)")
                 return
             }
             
-            guard let pokemonResponse = response.value else { return }
-            completion(pokemonResponse)
+            
         }
     }
         
@@ -66,14 +66,13 @@ class Networking {
         AF.request(url).validate().responseDecodable(of: Species.self) { (response) in
             switch response.result {
             case .success:
-                print("Validation Successful")
+                guard let responseSpecies = response.value else { return }
+                completion(responseSpecies)
             case let .failure(error):
                 print(error)
                 return
             }
-            guard let responseSpecies = response.value else { return }
             
-            completion(responseSpecies)
         }
     }
     
@@ -83,13 +82,13 @@ class Networking {
             
             switch response.result {
             case .success:
-                print("Validation Successful")
+                guard let responseEvolution = response.value else { return }
+                completion(responseEvolution)
             case let .failure(error):
                 print(error)
                 return
             }
-            guard let responseEvolution = response.value else { return }
-            completion(responseEvolution)
+            
         }
     }
     
@@ -99,14 +98,14 @@ class Networking {
             
             switch response.result {
             case .success:
-                print("Validation Successful")
+                guard let abilityDetail = response.value else { return }
+                completion(abilityDetail)
             case let .failure(error):
                 print(error)
                 return
             }
             
-            guard let abilityDetail = response.value else { return }
-            completion(abilityDetail)
+            
         }
     }
     
@@ -116,14 +115,14 @@ class Networking {
             
             switch response.result {
             case .success:
-                print("Validation Successful")
+                guard let type = response.value else { return }
+                completion(type)
             case let .failure(error):
                 print(error)
                 return
             }
             
-            guard let type = response.value else { return }
-            completion(type)
+            
         }
     }
 }

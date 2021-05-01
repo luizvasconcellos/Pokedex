@@ -23,10 +23,10 @@ class TypePokemonsViewController: UIViewController {
 
         pokemonCollectionView.dataSource = self
         pokemonCollectionView.delegate = self
-        
-        if let type = pokemonType {
+
+        if let type = self.pokemonType {
             self.navigationItem.title = type.type.name
-            getPokemonList(for: type)
+            self.getPokemonList(for: type)
         }
     }
     
@@ -40,21 +40,12 @@ class TypePokemonsViewController: UIViewController {
             if type.pokemon.count > 0 {
                 
                 self.getPokemonInfo(for: type.pokemon)
-                
-//                for item in type.pokemon {
-//                    self.networking.getPokemon(ByName: item.pokemon.name) { (pokemon) in
-//                        print("POKEMON :: \(pokemon.name)")
-//                        self.pokemonList.append(pokemon)
-//                    }
-//                }
             }
         }
     }
     
     func getPokemonInfo(for pokeList: [PokemonType]) {
         for item in pokeList {
-            print("POKEMON NAME :: \(item.pokemon.name)")
-            print("POKEMON URL :: \(item.pokemon.url)")
             networking.getPokemon(for: item.pokemon.url) { (pokemon) in
                 self.pokemonList.append(pokemon)
                 self.pokemonList.sort { $0.id < $1.id }
@@ -97,7 +88,6 @@ extension TypePokemonsViewController: UICollectionViewDataSource,UICollectionVie
         let pokedexCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! PokedexCollectionViewCell
         let pokemon = pokemonList[indexPath.row]
         pokedexCell.setup(with: pokemon)
-        
         return pokedexCell
     }
 }

@@ -17,9 +17,7 @@ class PokedexCollectionViewCell: UICollectionViewCell {
     func setup(with pokemon: Pokemon) {
         configureLayout()
         if let imageURL = pokemon.sprites.other?.officialArtwork.frontDefault {
-            KF.url(URL(string: imageURL)).cacheMemoryOnly(true).onSuccess({ (result) in
-                //TODO:: Incluir para remover a animação de carregamento
-            }).set(to: pokemonImage)
+            KF.url(URL(string: imageURL)).cacheMemoryOnly(true).onSuccess({ (result) in }).set(to: pokemonImage)
             
             self.idLbl.text = "№ \(String(pokemon.id))"
             self.namelbl.text = pokemon.name
