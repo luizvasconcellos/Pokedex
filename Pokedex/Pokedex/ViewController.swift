@@ -34,8 +34,9 @@ class ViewController: UIViewController {
         pokedexCollectionView.dataSource = self
         pokedexCollectionView.delegate = self
         
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
@@ -191,7 +192,12 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if pokemonList.count > 0 {
-            let pokemon = self.pokemonList[indexPath.row]
+            let pokemon: Pokemon
+            if isFiltering {
+                pokemon = filteredPokemons[indexPath.row]
+            } else {
+                pokemon = pokemonList[indexPath.row]
+            }
             performSegue(withIdentifier: detailSegueIdentifier, sender: pokemon)
         }
     }
@@ -210,12 +216,12 @@ extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text!)
+        pokedexCollectionView.reloadData()
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        filteredPokemons = pokemonList.filter { (pokemon: Pokemon) -> Bool in
-            let filterResult = pokemon.name.lowercased().contains(searchText.lowercased())
-            return filterResult
+
+        filteredPokemons = pokemonList.filter { $0.name.lowercased().contains(searchText.lowercased()) || (String($0.id) == searchText)
         }
         pokedexCollectionView.reloadData()
     }
