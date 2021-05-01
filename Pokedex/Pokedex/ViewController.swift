@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     let detailSegueIdentifier = "DetailSegue"
     
+    var lastContentOffset: CGFloat = 0
     var pokedexObj:Pokedex? = nil
     var pokemonList:[Pokemon] = []
     
@@ -156,7 +157,6 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
     }
     
     //MARK: Collection View
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFiltering {
             return filteredPokemons.count
@@ -183,10 +183,12 @@ extension ViewController:UICollectionViewDataSource,UICollectionViewDelegate,UIC
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 
-        //TODO::  coloca a request no final da página.
-
-            print("carregar mais itens")
+        if (lastContentOffset < scrollView.contentOffset.y) {
             getPokedexList()
+            let searchBar = searchController.searchBar
+            self.filterContentForSearchText(searchBar.text!)
+            lastContentOffset = scrollView.contentOffset.y
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -216,7 +218,6 @@ extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text!)
-        pokedexCollectionView.reloadData()
     }
     
     func filterContentForSearchText(_ searchText: String) {
@@ -249,7 +250,3 @@ extension UIImage {
         return newImage!
     }
 }
-
-
-
-
