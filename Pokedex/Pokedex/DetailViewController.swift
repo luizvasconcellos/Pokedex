@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var evolutionCollectionView: UICollectionView!
+    @IBOutlet weak var photoCollectionView: UICollectionView!
     
     @IBOutlet weak var hpBarView: HorizontalProgressBarView!
     @IBOutlet weak var attackBarView: HorizontalProgressBarView!
@@ -28,6 +29,7 @@ class DetailViewController: UIViewController {
     let navigationBarTitle = "Detalhes"
     let tableViewCellIdentifier = "detailCell"
     let evolutionCellidentifier = "evolutionPokemonCell"
+    let photoCellIdentifier = "photoCell"
     let defaultLanguage = "EN"
     let typePokemonsSegue = "typeSegue"
     let evHeaderText = "Evolução"
@@ -36,6 +38,7 @@ class DetailViewController: UIViewController {
     var pokemonObj: Pokemon? = nil
     var evolutionPokemonList: [Pokemon] = []
     var typePokemonList: [Pokemon] = []
+    var imageList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,8 @@ class DetailViewController: UIViewController {
         detailTableView.delegate = self
         evolutionCollectionView.dataSource = self
         evolutionCollectionView.delegate = self
+        photoCollectionView.dataSource = self
+        photoCollectionView.delegate = self
         
         self.navigationItem.title = navigationBarTitle
         pokemonImage.backgroundColor = UIColor.systemGray5
@@ -59,6 +64,7 @@ class DetailViewController: UIViewController {
             }
             setupStats(for: pokemon)
             setupEvolution()
+            getSpritsList()
         }
     }
     
@@ -86,6 +92,36 @@ class DetailViewController: UIViewController {
     
     func setupEvolution() {
         getSpecies()
+    }
+    
+    func getSpritsList() {
+        if let pokemon = pokemonObj{
+            if let artwork = pokemon.sprites.other?.officialArtwork {
+                if let img = artwork.frontDefault {
+                    if img.uppercased().suffix(4) != ".SVG" {
+                        imageList.append(img)
+                    }
+                }
+                if let img = artwork.frontFemale {
+                    if img.uppercased().suffix(4) != ".SVG" {
+                        imageList.append(img)
+                    }
+                }
+            }
+            if let dreamWorld = pokemon.sprites.other?.dreamWorld {
+                if let img = dreamWorld.frontDefault {
+                    if img.uppercased().suffix(4) != ".SVG" {
+                        imageList.append(img)
+                    }
+                }
+                if let img = dreamWorld.frontFemale {
+                    if img.uppercased().suffix(4) != ".SVG" {
+                        imageList.append(img)
+                    }
+                }
+            }
+        }
+        photoCollectionView.reloadData()
     }
 }
 
@@ -147,7 +183,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == typePokemonsSegue {
             if let detailVC = segue.destination as? TypePokemonsViewController {
-                detailVC.pokemonType = sender as! TypeElement
+                detailVC.pokemonType = (sender as! TypeElement)
             }
         }
     }
@@ -234,17 +270,28 @@ extension DetailViewController {
 extension DetailViewController:UICollectionViewDataSource,UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let evolutionCell = evolutionCollectionView.dequeueReusableCell(withReuseIdentifier: evolutionCellidentifier, for: indexPath) as! EvolutionCollectionViewCell
-        
-        evolutionCell.setup(with: evolutionPokemonList[indexPath.row])
-        
-        return evolutionCell
+        if collectionView == evolutionCollectionView {
+            let evolutionCell = evolutionCollectionView.dequeueReusableCell(withReuseIdentifier: evolutionCellidentifier, for: indexPath) as! EvolutionCollectionViewCell
+            
+            evolutionCell.setup(with: evolutionPokemonList[indexPath.row])
+            
+            return evolutionCell
+        } else {
+            let photoCell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: photoCellIdentifier, for: indexPath) as! PhotoCollectionViewCell
+            
+            photoCell.setup(with: imageList[indexPath.row])
+            
+            return photoCell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return evolutionPokemonList.count
+        if collectionView == evolutionCollectionView {
+            return evolutionPokemonList.count
+        } else {
+            return imageList.count
+        }
     }
     
 }

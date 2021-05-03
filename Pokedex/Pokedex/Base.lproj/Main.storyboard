@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gz2-fY-wlZ">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uCt-vf-oi8">
-                                <rect key="frame" x="4" y="92" width="382" height="718"/>
+                                <rect key="frame" x="4" y="92" width="420" height="800"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zu8-v2-wz5">
                                     <size key="itemSize" width="136" height="231"/>
@@ -99,14 +99,14 @@
             <objects>
                 <viewController id="mnQ-Z2-VSF" customClass="DetailViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qn6-Of-FDw">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hX7-U1-c6p">
-                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
+                                <rect key="frame" x="0.0" y="88" width="428" height="804"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRq-YC-WRo">
-                                        <rect key="frame" x="0.0" y="2" width="390" height="150"/>
+                                        <rect key="frame" x="0.0" y="2" width="428" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4O-R4-Uhr">
                                                 <rect key="frame" x="162" y="36" width="252" height="41"/>
@@ -133,7 +133,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9t-kx-FC7">
-                                        <rect key="frame" x="0.0" y="156" width="390" height="179"/>
+                                        <rect key="frame" x="0.0" y="156" width="428" height="179"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="HP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmO-QT-0vK">
                                                 <rect key="frame" x="8" y="8" width="135" height="20"/>
@@ -145,7 +145,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvE-o2-0pu" customClass="HorizontalProgressBarView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="8.0000000000000018" width="235" height="20.666666666666671"/>
+                                                <rect key="frame" x="147" y="8.0000000000000018" width="273" height="20.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="56c-Xb-B8X"/>
@@ -166,7 +166,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsq-MY-GVC" customClass="HorizontalProgressBarView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="36.666666666666686" width="235" height="20.333333333333329"/>
+                                                <rect key="frame" x="147" y="36.666666666666686" width="273" height="20.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="DQO-ep-I1l"/>
@@ -187,7 +187,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ra-iG-4fo" customClass="HorizontalProgressBarView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="65" width="235" height="20.666666666666671"/>
+                                                <rect key="frame" x="147" y="65" width="273" height="20.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="o9q-G7-gtr"/>
@@ -208,7 +208,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIu-wh-A9q" customClass="HorizontalProgressBarView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="93.666666666666686" width="235" height="20.333333333333329"/>
+                                                <rect key="frame" x="147" y="93.666666666666686" width="273" height="20.333333333333329"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="1xF-MB-Z2V"/>
@@ -229,7 +229,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fwf-0I-EKG" customClass="HorizontalProgressBarView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="122.00000000000001" width="235" height="20.666666666666671"/>
+                                                <rect key="frame" x="147" y="122.00000000000001" width="273" height="20.666666666666671"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="xdx-7d-neu"/>
@@ -250,7 +250,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edl-JT-he6" customClass="HorizontalProgressBarView" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="147" y="150.66666666666669" width="235" height="20.333333333333343"/>
+                                                <rect key="frame" x="147" y="150.66666666666669" width="273" height="20.333333333333343"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20.5" id="00g-V2-dtA"/>
@@ -299,18 +299,18 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m4j-lK-jQd">
-                                        <rect key="frame" x="0.0" y="339" width="390" height="198"/>
+                                        <rect key="frame" x="0.0" y="339" width="428" height="198"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCell" textLabel="I21-4q-Nrb" style="IBUITableViewCellStyleDefault" id="gm8-jD-j6y">
-                                                <rect key="frame" x="0.0" y="28" width="390" height="43.666667938232422"/>
+                                                <rect key="frame" x="0.0" y="28" width="428" height="43.666667938232422"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gm8-jD-j6y" id="YhM-2u-Nfd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I21-4q-Nrb">
-                                                            <rect key="frame" x="20" y="0.0" width="350" height="43.666667938232422"/>
+                                                            <rect key="frame" x="20" y="0.0" width="388" height="43.666667938232422"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -322,20 +322,20 @@
                                         </prototypes>
                                     </tableView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Lm5-10-eo1">
-                                        <rect key="frame" x="0.0" y="583" width="390" height="200"/>
+                                        <rect key="frame" x="0.0" y="583" width="428" height="200"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="Hnq-Mm-War"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zEA-Ng-pgy">
                                             <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="4" height="50"/>
-                                            <size key="footerReferenceSize" width="3" height="0.0"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="evolutionPokemonCell" id="BaA-qN-2h3" customClass="EvolutionCollectionViewCell" customModule="Pokedex" customModuleProvider="target">
-                                                <rect key="frame" x="4" y="9" width="150" height="182"/>
+                                                <rect key="frame" x="0.0" y="9" width="150" height="182"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7UE-0F-JNf">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="182"/>
@@ -373,34 +373,70 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
-                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IpF-Qv-NaJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="4" height="200"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionReusableView>
-                                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="29h-Zv-bNW">
-                                            <rect key="frame" x="154" y="0.0" width="3" height="200"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionReusableView>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evoluções" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c1S-zX-Iv6">
-                                        <rect key="frame" x="0.0" y="539" width="390" height="44"/>
+                                        <rect key="frame" x="0.0" y="539" width="428" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Unx-oS-25o">
+                                        <rect key="frame" x="0.0" y="787" width="428" height="210"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="210" id="XqW-uG-yTV"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Me-OP-ut5">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="Mjk-PJ-cBO" customClass="PhotoCollectionViewCell" customModule="Pokedex" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="5" width="250" height="200"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="i4x-CT-oyc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xwY-oq-h8b">
+                                                            <rect key="frame" x="0.0" y="0.0" width="250" height="200"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="250" id="9Yq-hb-SqX"/>
+                                                                <constraint firstAttribute="height" constant="200" id="xEA-jB-jDt"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="xwY-oq-h8b" secondAttribute="bottom" id="U0r-d6-Ump"/>
+                                                        <constraint firstItem="xwY-oq-h8b" firstAttribute="leading" secondItem="i4x-CT-oyc" secondAttribute="leading" id="XC2-cH-whY"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xwY-oq-h8b" secondAttribute="trailing" id="y5d-sZ-aWy"/>
+                                                        <constraint firstItem="xwY-oq-h8b" firstAttribute="top" secondItem="i4x-CT-oyc" secondAttribute="top" id="y8w-MM-8g3"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="pokemonImage" destination="xwY-oq-h8b" id="6Xo-Vz-BNz"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="m4j-lK-jQd" secondAttribute="trailing" id="1Me-4t-h8S"/>
                                     <constraint firstItem="Lm5-10-eo1" firstAttribute="top" secondItem="c1S-zX-Iv6" secondAttribute="bottom" id="3BQ-DY-Xsj"/>
                                     <constraint firstAttribute="trailing" secondItem="vRq-YC-WRo" secondAttribute="trailing" id="5hk-jb-ZIj"/>
                                     <constraint firstItem="vRq-YC-WRo" firstAttribute="centerX" secondItem="hX7-U1-c6p" secondAttribute="centerX" id="9XD-fu-T6M"/>
+                                    <constraint firstAttribute="trailing" secondItem="Unx-oS-25o" secondAttribute="trailing" id="ApK-4L-uRs"/>
+                                    <constraint firstAttribute="bottom" secondItem="Unx-oS-25o" secondAttribute="bottom" id="G11-ex-kS6"/>
                                     <constraint firstItem="c1S-zX-Iv6" firstAttribute="top" secondItem="m4j-lK-jQd" secondAttribute="bottom" constant="2" id="IT2-AH-4Sg"/>
+                                    <constraint firstItem="Unx-oS-25o" firstAttribute="leading" secondItem="hX7-U1-c6p" secondAttribute="leading" id="LPW-sk-5Hc"/>
+                                    <constraint firstItem="Unx-oS-25o" firstAttribute="top" secondItem="Lm5-10-eo1" secondAttribute="bottom" constant="4" id="VRV-uA-da8"/>
                                     <constraint firstItem="vRq-YC-WRo" firstAttribute="leading" secondItem="hX7-U1-c6p" secondAttribute="leading" id="WTz-vu-xdN"/>
                                     <constraint firstItem="vRq-YC-WRo" firstAttribute="trailing" secondItem="W9t-kx-FC7" secondAttribute="trailing" id="Zoc-Ae-488"/>
                                     <constraint firstItem="vRq-YC-WRo" firstAttribute="leading" secondItem="W9t-kx-FC7" secondAttribute="leading" id="acd-45-PN8"/>
-                                    <constraint firstAttribute="bottom" secondItem="Lm5-10-eo1" secondAttribute="bottom" constant="2" id="css-zP-CU0"/>
                                     <constraint firstItem="Lm5-10-eo1" firstAttribute="leading" secondItem="hX7-U1-c6p" secondAttribute="leading" id="e4j-x0-WDH"/>
                                     <constraint firstItem="W9t-kx-FC7" firstAttribute="top" secondItem="vRq-YC-WRo" secondAttribute="bottom" constant="4" id="gaJ-Ko-hTr"/>
                                     <constraint firstAttribute="trailing" secondItem="Lm5-10-eo1" secondAttribute="trailing" id="mii-tO-FpN"/>
@@ -430,6 +466,7 @@
                         <outlet property="hpBarView" destination="ZvE-o2-0pu" id="ZKv-WO-Sl4"/>
                         <outlet property="idLbl" destination="afM-r3-gd9" id="wxn-5C-9dV"/>
                         <outlet property="nameLbl" destination="h4O-R4-Uhr" id="QCM-4R-7OD"/>
+                        <outlet property="photoCollectionView" destination="Unx-oS-25o" id="sRL-sF-f1v"/>
                         <outlet property="pokemonImage" destination="nyT-UF-W6W" id="sG2-qc-MTI"/>
                         <outlet property="specialAttackBarView" destination="kIu-wh-A9q" id="B3Z-aM-6Q5"/>
                         <outlet property="specialDefenseBarView" destination="Fwf-0I-EKG" id="s35-JD-xfJ"/>
@@ -439,18 +476,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eB4-Ip-qYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704.6153846153845" y="76.066350710900466"/>
+            <point key="canvasLocation" x="1703.2710280373831" y="75.809935205183592"/>
         </scene>
         <!--Type Pokemons View Controller-->
         <scene sceneID="dgC-19-n6D">
             <objects>
                 <viewController id="peq-WT-ObR" customClass="TypePokemonsViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nuK-ee-IEo">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="n9R-Ag-KPM">
-                                <rect key="frame" x="4" y="92" width="382" height="718"/>
+                                <rect key="frame" x="4" y="92" width="420" height="800"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IvG-kP-Iwx">
                                     <size key="itemSize" width="136" height="231"/>
@@ -531,7 +568,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gz2-fY-wlZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VrJ-OU-Odv">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.8901960784313725" green="0.20784313725490194" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
